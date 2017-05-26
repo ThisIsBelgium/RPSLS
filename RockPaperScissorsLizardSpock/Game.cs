@@ -26,6 +26,7 @@ namespace RockPaperScissorsLizardSpock
                 {
                     Console.WriteLine("Please enter a valid response" + "\nPress enter to continue");
                     Console.ReadLine();
+                    Console.Clear();
                     SelectPlayers();
                 }
             }
@@ -33,6 +34,7 @@ namespace RockPaperScissorsLizardSpock
             {
                 Console.WriteLine("Please enter a valid response" + "\nPress enter to continue");
                 Console.ReadLine();
+                Console.Clear();
                 SelectPlayers();
             }
         }
@@ -106,7 +108,7 @@ namespace RockPaperScissorsLizardSpock
             else
             {
                 Console.Clear();
-                Announcment();
+                FinalWinnerCheck();
             }
         }
         private void FinalWinnerCheck()
