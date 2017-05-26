@@ -71,6 +71,13 @@ namespace RockPaperScissorsLizardSpock
         {
             Console.WriteLine("Enter your name please");
             Name = Console.ReadLine();
+            if (Name == "")
+            {
+                Console.WriteLine("Please choose a name" + "\nPress enter to try again");
+                Console.ReadLine();
+                Console.Clear();
+                NameSelection();
+            }
         }
 
     }
