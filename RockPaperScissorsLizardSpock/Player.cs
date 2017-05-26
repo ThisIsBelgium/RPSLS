@@ -83,20 +83,20 @@ namespace RockPaperScissorsLizardSpock
         public virtual void Initialize()
         {
             NameGet();
-            AnswerGet();
+            GetAnswer();
             HandPosition();
         }
         private void NameGet()
         {
             NameSelection();
         }
-        private void AnswerGet()
+        private void GetAnswer()
         {
             SelectHandPosition();
         }
         public void PostInitSelection()
         {
-            AnswerGet();
+            GetAnswer();
             HandPosition();
         }
     }

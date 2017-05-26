@@ -10,8 +10,8 @@ namespace RockPaperScissorsLizardSpock
     {
         static void Main(string[] args)
         {
-            Game one = new Game();
-            one.run();
+            Game FirstGame = new Game();
+            FirstGame.run();
 
         }
     }

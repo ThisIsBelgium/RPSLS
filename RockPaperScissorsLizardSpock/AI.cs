@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissorsLizardSpock
 {
-    class AI:Player
+    class AI : Player
     {
         public AI()
         {
-            this.Name = Name;
-            this.Answer = Answer;
-            this.AnswerString = AnswerString;
+            
         }
         public override void NameSelection()
         {
@@ -24,13 +22,13 @@ namespace RockPaperScissorsLizardSpock
                 Console.ReadLine();
                 Console.Clear();
                 NameSelection();
-                
+
             }
         }
         public override void SelectHandPosition()
         {
             Random rnd = new Random();
-            Answer = rnd.Next(0,4);
+            Answer = rnd.Next(0, 4);
         }
         public override void Initialize()
         {
