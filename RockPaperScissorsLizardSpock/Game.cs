@@ -64,22 +64,49 @@ namespace RockPaperScissorsLizardSpock
                 {
                     Console.WriteLine(PlayerOne.Name + " " + "has won!");
                     Console.WriteLine(PlayerOne.AnswerString + "\n beats" + "\n" + AIOne.AnswerString);
-                    Console.WriteLine("Press enter to end game");
-                    Console.ReadLine();
+                    Console.WriteLine("Would you like to play again?(yes/no)");
+                    string RestartChoice = Console.ReadLine();
+                    if (RestartChoice == "yes")
+                    {
+                        Console.Clear();
+                        run();
+                    }
+                    else if (RestartChoice == "no")
+                    {
+                        Environment.Exit(0);
+                    }
                 }
                 else if (d == 2 || d == 4)
                 {
                     Console.WriteLine(AIOne.Name + " " + "has won!");
                     Console.WriteLine(AIOne.AnswerString + "\n beats" + "\n" + PlayerOne.AnswerString);
-                    Console.WriteLine("Press enter to end game");
-                    Console.ReadLine();
+                    Console.WriteLine("Would you like to play again?(yes/no)");
+                    string RestartChoice = Console.ReadLine();
+                    if (RestartChoice == "yes")
+                    {
+                        Console.Clear();
+                        run();
+                    }
+                    else if (RestartChoice == "no")
+                    {
+                        Environment.Exit(0);
+                    }
                 }
                 else
                 {
                     Console.WriteLine("You Have Tied");
                     Console.WriteLine(PlayerOne.AnswerString + "\n ties" + "\n" + AIOne.AnswerString);
-                    Console.WriteLine("Press enter to end game");
-                    Console.ReadLine();
+                    Console.WriteLine("Would you like to play again?(yes/no)");
+                    string RestartChoice = Console.ReadLine();
+                    if (RestartChoice == "yes")
+                    {
+                        Console.Clear();
+                        run();
+                    }
+                    else if (RestartChoice == "no")
+                    {
+                        Environment.Exit(0);
+                    }
                 }
             }
             else
@@ -90,22 +117,49 @@ namespace RockPaperScissorsLizardSpock
                 {
                     Console.WriteLine(PlayerOne.Name + " " + "has won!");
                     Console.WriteLine(PlayerOne.AnswerString + "\n beats" + "\n" + PlayerTwo.AnswerString);
-                    Console.WriteLine("Press enter to end game");
-                    Console.ReadLine();
+                    Console.WriteLine("Would you like to play again?(yes/no)");
+                    string RestartChoice = Console.ReadLine();
+                    if (RestartChoice == "yes")
+                    {
+                        Console.Clear();
+                        run();
+                    }
+                    else if (RestartChoice == "no")
+                    {
+                        Environment.Exit(0);
+                    }
                 }
                 else if (d == 2 || d == 4)
                 {
                     Console.WriteLine(PlayerTwo.Name + " " + "has won!");
                     Console.WriteLine(PlayerTwo.AnswerString + "\n beats" + "\n" + PlayerOne.AnswerString);
-                    Console.WriteLine("Press enter to end game");
-                    Console.ReadLine();
+                    Console.WriteLine("Would you like to play again?(yes/no)");
+                    string RestartChoice = Console.ReadLine();
+                    if (RestartChoice == "yes")
+                    {
+                        Console.Clear();
+                        run();
+                    }
+                    else if (RestartChoice == "no")
+                    {
+                        Environment.Exit(0);
+                    }
                 }
                 else
                 {
                     Console.WriteLine("You Have Tied");
                     Console.WriteLine(PlayerOne.AnswerString + "\n ties" + "\n" + PlayerTwo.AnswerString);
-                    Console.WriteLine("Press enter to end game");
-                    Console.ReadLine();
+                    Console.WriteLine("Would you like to play again?(yes/no)");
+                    string RestartChoice = Console.ReadLine();
+                    if (RestartChoice == "yes")
+                    {
+                        Console.Clear();
+                        run();
+                    }
+                    else if (RestartChoice == "no")
+                    {
+                        Environment.Exit(0);
+                    }
                 }
             }
         }
