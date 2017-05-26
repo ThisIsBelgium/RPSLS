@@ -11,6 +11,7 @@ namespace RockPaperScissorsLizardSpock
         public string Name;
         public int Answer;
         public string AnswerString;
+        public int Score;
 
         public virtual void SelectHandPosition()
         {
@@ -79,7 +80,25 @@ namespace RockPaperScissorsLizardSpock
                 NameSelection();
             }
         }
-
+        public virtual void Initialize()
+        {
+            NameGet();
+            AnswerGet();
+            HandPosition();
+        }
+        private void NameGet()
+        {
+            NameSelection();
+        }
+        private void AnswerGet()
+        {
+            SelectHandPosition();
+        }
+        public void PostInitSelection()
+        {
+            AnswerGet();
+            HandPosition();
+        }
     }
 
 }

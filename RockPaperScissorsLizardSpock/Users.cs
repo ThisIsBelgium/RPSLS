@@ -14,20 +14,8 @@ namespace RockPaperScissorsLizardSpock
             this.Answer = Answer;
             this.AnswerString = AnswerString;
         }
-        private void NameGet()
-        {
-            NameSelection();
-        }
-        private void AnswerGet()
-        {
-            SelectHandPosition();
-        }
-        public void UserInit()
-        {
-            NameGet();
-            AnswerGet();
-            HandPosition();
-        }
+        
+        
 
 
         

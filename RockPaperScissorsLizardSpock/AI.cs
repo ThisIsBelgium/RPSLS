@@ -32,7 +32,7 @@ namespace RockPaperScissorsLizardSpock
             Random rnd = new Random();
             Answer = rnd.Next(0,4);
         }
-        public void AIInit()
+        public override void Initialize()
         {
             NameSelection();
             SelectHandPosition();

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissorsLizardSpock
 {
-    class Game
+    public class Game
     {
-        Users PlayerOne = new Users();
-        Users PlayerTwo = new Users();
-        AI AIOne = new AI();
-
+        int PlayerNumber;
+        int D;
+        string RestartChoice;
+        Player PlayerOne;
+        Player PlayerTwo;
         private void SelectPlayers()
         {
             try
@@ -20,153 +21,137 @@ namespace RockPaperScissorsLizardSpock
                                   "\n1.Vs. AI" +
                                   "\n2.Or Vs. Another player" +
                                   "\nSelect 1 or 2");
-                int playernumber = int.Parse(Console.ReadLine());
-                if (playernumber == 1)
+                PlayerNumber = int.Parse(Console.ReadLine());
+                if (PlayerNumber > 2 || PlayerNumber < 1)
                 {
-                    PlayerOne.UserInit();
-                    Console.Clear();
-                    AIOne.AIInit();
-                    Console.Clear();
-                }
-                else if (playernumber == 2)
-                {
-                    PlayerOne.UserInit();
-                    Console.Clear();
-                    PlayerTwo.UserInit();
-                    Console.Clear();
-                }
-                else
-                {
-                    Console.WriteLine("Please make a valid selection" + "\nPress enter to continue");
+                    Console.WriteLine("Please enter a valid response" + "\nPress enter to continue");
                     Console.ReadLine();
-                    Console.Clear();
                     SelectPlayers();
                 }
             }
-            catch
+            catch (Exception e)
             {
-                Console.WriteLine("Please choose a  valid selection" + "\nPress enter to continue");
+                Console.WriteLine("Please enter a valid response" + "\nPress enter to continue");
                 Console.ReadLine();
-                Console.Clear();
                 SelectPlayers();
-
             }
         }
+        private void PlayerInstance()
+        {
+            if (PlayerNumber == 1)
+            {
+                PlayerOne = new Users();
+                PlayerTwo = new AI();
 
-        private void WinnerCheck()
+            }
+            else if (PlayerNumber == 2)
+            {
+                Users PlayerOne = new Users();
+                Users PlayerTwo = new Users();
+            }
+        }
+        private void Initiate()
+        {
+            PlayerOne.Initialize();
+            Console.Clear();
+            PlayerTwo.Initialize();
+            Console.Clear();
+        }
+        private void RoundWinnerCheck()
         {
             int a = PlayerOne.Answer;
-            if (AIOne.Name != null)
+            int b = PlayerTwo.Answer;
+            D = (5 + a - b) % 5;
+        }
+        private void Announcment()
+        {
+            if (D == 1 || D == 3)
             {
-                int b = AIOne.Answer;
-                int d = (5 + a - b) % 5;
-                if (d == 1 || d == 3)
-                {
-                    Console.WriteLine(PlayerOne.Name + " " + "has won!");
-                    Console.WriteLine(PlayerOne.AnswerString + "\n beats" + "\n" + AIOne.AnswerString);
-                    Console.WriteLine("Would you like to play again?(yes/no)");
-                    string RestartChoice = Console.ReadLine();
-                    if (RestartChoice == "yes")
-                    {
-                        Console.Clear();
-                        run();
-                    }
-                    else if (RestartChoice == "no")
-                    {
-                        Environment.Exit(0);
-                    }
-                }
-                else if (d == 2 || d == 4)
-                {
-                    Console.WriteLine(AIOne.Name + " " + "has won!");
-                    Console.WriteLine(AIOne.AnswerString + "\n beats" + "\n" + PlayerOne.AnswerString);
-                    Console.WriteLine("Would you like to play again?(yes/no)");
-                    string RestartChoice = Console.ReadLine();
-                    if (RestartChoice == "yes")
-                    {
-                        Console.Clear();
-                        run();
-                    }
-                    else if (RestartChoice == "no")
-                    {
-                        Environment.Exit(0);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("You Have Tied");
-                    Console.WriteLine(PlayerOne.AnswerString + "\n ties" + "\n" + AIOne.AnswerString);
-                    Console.WriteLine("Would you like to play again?(yes/no)");
-                    string RestartChoice = Console.ReadLine();
-                    if (RestartChoice == "yes")
-                    {
-                        Console.Clear();
-                        run();
-                    }
-                    else if (RestartChoice == "no")
-                    {
-                        Environment.Exit(0);
-                    }
-                }
+                Console.WriteLine(PlayerOne.Name + " " + "has won the round!");
+                Console.WriteLine(PlayerOne.AnswerString + "\n beats" + "\n" + PlayerTwo.AnswerString);
+                Console.WriteLine("Press enter to continue to the next round");
+                Console.ReadLine();
+                Console.Clear();
+                PlayerOne.Score += 1;
+            }
+            else if (D == 2 || D == 4)
+            {
+                Console.WriteLine(PlayerTwo.Name + " " + "has won the round!");
+                Console.WriteLine(PlayerTwo.AnswerString + "\n beats" + "\n" + PlayerOne.AnswerString);
+                Console.WriteLine("Press enter to continue to the next round");
+                Console.ReadLine();
+                Console.Clear();
+                PlayerTwo.Score += 1;
             }
             else
             {
-                int b = PlayerTwo.Answer;
-                int d = (5 + a - b) % 5;
-                if (d == 1 || d == 3)
-                {
-                    Console.WriteLine(PlayerOne.Name + " " + "has won!");
-                    Console.WriteLine(PlayerOne.AnswerString + "\n beats" + "\n" + PlayerTwo.AnswerString);
-                    Console.WriteLine("Would you like to play again?(yes/no)");
-                    string RestartChoice = Console.ReadLine();
-                    if (RestartChoice == "yes")
-                    {
-                        Console.Clear();
-                        run();
-                    }
-                    else if (RestartChoice == "no")
-                    {
-                        Environment.Exit(0);
-                    }
-                }
-                else if (d == 2 || d == 4)
-                {
-                    Console.WriteLine(PlayerTwo.Name + " " + "has won!");
-                    Console.WriteLine(PlayerTwo.AnswerString + "\n beats" + "\n" + PlayerOne.AnswerString);
-                    Console.WriteLine("Would you like to play again?(yes/no)");
-                    string RestartChoice = Console.ReadLine();
-                    if (RestartChoice == "yes")
-                    {
-                        Console.Clear();
-                        run();
-                    }
-                    else if (RestartChoice == "no")
-                    {
-                        Environment.Exit(0);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("You Have Tied");
-                    Console.WriteLine(PlayerOne.AnswerString + "\n ties" + "\n" + PlayerTwo.AnswerString);
-                    Console.WriteLine("Would you like to play again?(yes/no)");
-                    string RestartChoice = Console.ReadLine();
-                    if (RestartChoice == "yes")
-                    {
-                        Console.Clear();
-                        run();
-                    }
-                    else if (RestartChoice == "no")
-                    {
-                        Environment.Exit(0);
-                    }
-                }
+                Console.WriteLine("You Have Tied");
+                Console.WriteLine(PlayerOne.AnswerString + "\n ties" + "\n" + PlayerTwo.AnswerString);
+                Console.WriteLine("Press enter to continue to the next round");
+                Console.ReadLine();
+                Console.Clear();
             }
         }
+        private void Restart()
+        {
+            if (RestartChoice == "yes")
+            {
+                Console.Clear();
+                run();
+            }
+            else if (RestartChoice == "no")
+            {
+                Environment.Exit(0);
+            }
+            else
+            {
+                Console.Clear();
+                Announcment();
+            }
+        }
+        private void FinalWinnerCheck()
+        {
+            if (PlayerOne.Score == 2)
+            {
+                Console.WriteLine(PlayerOne.Name + " Has won!" + "\n Do you want to play again(yes/no)");
+                RestartChoice = Console.ReadLine();
+                Restart();
+            }
+            else if(PlayerTwo.Score == 2)
+            {
+                Console.WriteLine(PlayerTwo.Name +" Has won!" + "\n Do you want to play again(yes/no)");
+                RestartChoice = Console.ReadLine();
+                Restart();
+            }
+            else
+            {
+                PlayerOne.PostInitSelection();
+                Console.Clear();
+                PlayerTwo.PostInitSelection();
+                Console.Clear();
+                PostInitRounds();
+            }
+        }
+
+
+
         public void run()
         {
             SelectPlayers();
-            WinnerCheck();
+            PlayerInstance();
+            Initiate();
+            RoundWinnerCheck();
+            Announcment();
+            FinalWinnerCheck();
+
+        }
+
+        private void PostInitRounds()
+        {
+            RoundWinnerCheck();
+            Announcment();
+            FinalWinnerCheck();
+            
         }
     }
 }
